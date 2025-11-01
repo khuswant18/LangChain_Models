@@ -1,0 +1,3 @@
+We use Embedding because we change a text to vector so that it contains the contextual Understanding aa jaye 
+text1 -> vector (now this vector has context to text1)
+text2 -> vector (now this vector has context to text2)
