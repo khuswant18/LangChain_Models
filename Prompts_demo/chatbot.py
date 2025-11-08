@@ -1,12 +1,20 @@
 from langchain_google_genai import GoogleGenerativeAI
+from langchain_core.messages import SystemMessage,AIMessage,HumanMessage
 from dotenv import load_dotenv
 load_dotenv() 
 model = GoogleGenerativeAI(model="gemini-2.5-pro")
 
+chat_history = [
+    SystemMessage(content="You are very helpful")
+]
+
 while True:
     user_input = input('You:')
+    chat_history.append(HumanMessage(content=user_input))
     if user_input=="exit":
         break 
 
-    result = model.invoke(user_input)
-    print("AI",result) 
+    result = model.invoke(chat_history)
+    chat_history.append(AIMessage(content=result)) 
+    print("AI:",result) 
+print(chat_history) 
